@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <!-- head 부분 생략 -->
+
+    <style>
+        #contact {
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  background-color: #151239;
+  padding: 8em 0 5em;
+  margin-top: auto;
+  color: white;
+  position: relative;
+}
+
+.svgcolor-light {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+
+}
+
+.contact-container {
+  width: 80%;
+  max-width: 600px;
+  text-align: center;
+}
+
+.svgcolor-light {
+  fill: white;
+  stroke: white;
+}
+
+.contact-heading {
+  font-size: 2em;
+  margin-bottom: 1em;
+  position: relative;
+
+}
+
+.contact-content {
+  font-size: 1.2em;
+  margin-bottom: 2em;
+}
+
+.contact-message-box {
+  background-color: #26264F;
+  padding: 20px;
+  border-radius: 10px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 100%;
+}
+
+input,
+textarea {
+  width: 100%;
+  padding: 0.5em;
+  margin-bottom: 1em;
+}
+
+#success {
+  display: none;
+  color: #4CAF50;
+  margin-bottom: 1em;
+}
+
+.button {
+  background-color: #0c0239;
+  color: white;
+  position: relative;
+  top: 10px;
+  width: 50%;
+  height: 100%;
+  border: none;
+  cursor: pointer;
+}
+    </style>
+</head>
+<body>
+<section id="contact">
+    <!-- SVG 및 contact-container 등의 코드 그대로 사용하세요. -->
+
+    <div class="contact-container">
+        <h1 class="contact-heading">Contact</h1>
+        <div class="contact-content">궁금한게 있으시면 여기에 메시지를 보내주세요!!</div>
+        <div class="contact-message-box">
+            <form th:action="@{/contact/submit}" method="post" th:object="${contactForm}">
+                <input placeholder="Name" type="text" th:field="*{name}" required>
+                <input placeholder="Enter email" type="email" th:field="*{email}" required>
+                <textarea placeholder="Your Message" type="text" th:field="*{message}" required></textarea>
+                <div id="success" th:text="${successMessage}"></div>
+                <input class="button" type="submit" id="submit" value="SUBMIT">
+            </form>
+        </div>
+    </div>
+</section>
+
+</body>
+</html>

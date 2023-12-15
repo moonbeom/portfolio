@@ -45,14 +45,14 @@ public class ContactController {
 
         try {
             // 받는 사람의 이메일을 내 이메일 주소로 설정
-            String to = "a01053522105@@gmail.com";
+            String to = "a01053522105@gmail.com";
 
             // 익명 처리: 사용자의 이름, 이메일을 메시지에 추가
             String anonymousMessage = "이름: " + (contactForm.getName().isEmpty() ? "익명" : contactForm.getName()) + "\n" +
                     "이메일: " + (contactForm.getEmail().isEmpty() ? "익명" : contactForm.getEmail()) + "\n" +
                     "메시지: " + contactForm.getMessage();
 
-            emailService.sendEmail("a01053522105@@gmail.com", to, "새로운 연락 메시지", anonymousMessage);
+            emailService.sendEmail("a01053522105@gmail.com", to, "새로운 연락 메시지", anonymousMessage);
         } catch (MessagingException e) {
             e.printStackTrace();
             model.addAttribute("error", "이메일 전송 중 오류가 발생했습니다.");
